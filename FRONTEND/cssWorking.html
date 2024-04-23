@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: greenyellow;
+            height: 150px;
+            flex-basis: 100%;
+        }
+
+        .box2, .box3{
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .one{
+            background-color: lightseagreen;
+            height: 250px;
+            flex-basis: 33%;
+        }
+
+        .two{
+            background-color: rgb(233, 204, 238);
+            height: 250px;
+            flex-basis: 24%;
+        }
+
+        @media screen and (max-width: 800px){
+            .one{
+                height: 80px;
+                flex-basis: 100%;
+                margin-bottom: 5px;
+            }
+
+            .two{
+                height: 150px;
+                flex-basis: 48%;
+                margin-bottom: 5px;
+            }
+            
+        }
+
+        @media screen and (max-width: 300px){
+            .one{
+                height: 115px;
+                flex-basis: 100%;
+                margin-bottom: 5px;
+            }
+
+            .two{
+                height: 75px;
+                flex-basis: 100%;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <div class="box2">
+        <div class="one"></div>
+        <div class="one"></div>
+        <div class="one"></div>
+    </div>
+
+    <div class="box3">
+        <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div>
+    </div>
+
+</body>
+</html>

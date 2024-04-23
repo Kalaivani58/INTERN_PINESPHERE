@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Guess the number from 1 to 10</h1>
+    <input type="number" id="num1">
+    <button onclick="check()">Check</button>
+    <p id="res"></p>
+    <p id = "fscore"></p>
+    <script>
+        var score = 10
+        function check(){
+            var a = Math.floor(Math.random()*10 + 1)
+            var b = document.getElementById("num1").value
+            if(a==b){
+                res.textContent = "You are Right!"
+                fscore.textContent = "Your score: " + score
+            }
+            else{
+                res.textContent = "You are wrong! The right answer is :" + a
+                score = score - 1
+                fscore.textContent = "Your score: " + score
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Ticker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            overflow: hidden;
+        }
+        #newsTicker {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: scrollNews 25s linear infinite; /* Adjust the duration as needed */
+        }
+        .newsItem {
+            display: inline-block;
+            padding-right: 20px; /* Adjust the space between news items */
+        }
+
+        @keyframes scrollNews {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="newsTickerContainer">
+        <div id="newsTicker"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayNewsTicker();
+        });
+
+        async function displayNewsTicker() {
+            const apiKey = '62a90b18a7314d069a5c9d7eb173df1b'; // Replace with your News API key
+            const newsUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(newsUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch news. Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const newsTicker = document.getElementById('newsTicker');
+
+                if (data.articles && data.articles.length > 0) {
+                    data.articles.forEach(article => {
+                        const newsItem = document.createElement('div');
+                        newsItem.classList.add('newsItem');
+                        newsItem.innerHTML = `<strong>${article.title}</strong>`;
+                        newsTicker.appendChild(newsItem);
+                    });
+                } else {
+                    newsTicker.innerHTML = '<p>No news available at the moment.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error.message);
+            }
+        }
+    </script>
+</body>
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Ticker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            overflow: hidden;
+        }
+        #newsTickerContainer {
+            white-space: nowrap;
+            overflow: hidden;
+            position: fixed;
+            bottom: 10%;
+            left: 0;
+            width: 100%;
+            height: 30px; 
+            background-color: black; /* Add background color as needed */
+        }
+        .newsItem {
+            color: white;
+            display: inline-block;
+            padding-right: 20px; /* Adjust the space between news items */
+        }
+    </style>
+</head>
+<body>
+    <div id="newsTickerContainer">
+        <div id="newsTicker"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayNewsTicker();
+        });
+
+        async function displayNewsTicker() {
+            const apiKey = '62a90b18a7314d069a5c9d7eb173df1b'; // Replace with your News API key
+            const newsUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(newsUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch news. Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const newsTicker = document.getElementById('newsTicker');
+
+                if (data.articles && data.articles.length > 0) {
+                    let tickerWidth = 0;
+
+                    data.articles.forEach(article => {
+                        const newsItem = document.createElement('div');
+                        newsItem.classList.add('newsItem');
+                        newsItem.innerHTML = `<strong>${article.title}</strong>`;
+                        newsTicker.appendChild(newsItem);
+
+                        // Calculate the total width of news items for scrolling
+                        tickerWidth += newsItem.clientWidth + 20; // 20 is the padding-right
+                    });
+
+                    // Set the width of the ticker container to enable scrolling
+                    newsTicker.style.width = `${tickerWidth}px`;
+
+                    // Call the scroll function after a delay
+                    setTimeout(() => {
+                        scrollNewsTicker(newsTicker, tickerWidth);
+                    }, 1000); // Adjust the delay (in milliseconds) before starting the scroll
+                } else {
+                    newsTicker.innerHTML = '<p>No news available at the moment.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error.message);
+            }
+        }
+
+        function scrollNewsTicker(ticker, width) {
+            let position = 0;
+
+            function animateScroll() {
+                position -= 1;
+                if (position < -width) {
+                    position = ticker.clientWidth;
+                }
+                ticker.style.transform = `translateX(${position}px)`;
+                requestAnimationFrame(animateScroll);
+            }
+
+            // Start the animation
+            animateScroll();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Blog preview card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color: hsl(47, 88%, 63%);
+    }
+
+    .container{
+      display: flex;
+      justify-content: center;
+    }
+
+    .box{
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      width: 360px;
+      height: 520px;
+      border: 1px solid;
+      border-radius: 15px;
+      background-color: white;
+      box-shadow: 7px 7px black;
+      font-family: 'Figtree', sans-serif;
+    }
+
+    .box img{
+      width: 320px;
+      height: 200px;
+      margin: 20px 20px 15px;
+      border-radius: 20px;
+    }
+
+    .box button{
+      width: 90px;
+      height: 30px;
+      margin: 5px 20px;
+      background-color: hsl(47, 88%, 63%);
+      border-style: none;
+      border-radius: 3px;
+      font-family: 'Figtree', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .box #p1{
+      margin: 5px 20px;
+      font-size: 16px;
+      color: hsl(0, 1%, 21%);
+    }
+
+    .box h2{
+      margin: 10px 20px;
+    }
+
+    .box #p2{
+      margin: 5px 20px;
+      line-height: 25px;
+      color: hsl(0, 0%, 50%);
+      /* word-spacing: 2px; */
+    }
+
+    .foot{
+      display: inline-flex;
+      align-items: center;
+      margin: 10px 2px;
+    }
+
+    .box #icon{
+      border-radius: 100%;
+      width: 50px;
+      height: 50px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <img src="assets/images/illustration-article.svg">
+      <button>Learning</button>
+      <p id="p1">Published 21 Dec 2023</p>
+      <h2>HTML & CSS foundations</h2>
+      <p id="p2">These languages are the backbone of every website, defining structure, content, and presentation.</p>
+      <div class="foot">
+        <img src="assets/images/user.jpeg" id="icon">
+        <h4>Elena Gilbert</h4>
+      </div>
+      
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and H3 Alignment</title>
+    <style>
+        .row {
+            display: inline-flex;
+            align-items: center; /* Vertical center alignment */
+        }
+
+        .row img {
+            margin-right: 10px; /* Adjust margin as needed */
+        }
+    </style>
+</head>
+<body>
+
+<div class="row">
+    <img src="/assets/images/user.jpeg" alt="Your Image">
+    <h3>Your Heading</h3>
+</div>
+
+</body>
+</html> -->

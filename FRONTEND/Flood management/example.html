@@ -1,0 +1,377 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 50px; /* Adjust the width of the logo */
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            cursor: pointer;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            transform: scale(1.2); /* Adjust the scale factor as needed */
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .modal-content {
+            text-align: left;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        
+#login-container {
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: purple;
+    /* color: white; */
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    color: purple;
+}
+
+/* p{
+    /* color: white; */
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="your-logo.png" alt="Logo">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li id="loginBtn">Login/Signup</li>
+        </ul>
+    </nav>
+
+    <section>
+        <!-- Your landing page content goes here 
+        <h1>Welcome to Your Website</h1>
+        <p>This is a simple landing page.</p>
+    </section>
+
+    <!-- Modal HTML 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Your login/signup form goes here -->
+            <!-- <h2>Login/Signup</h2> 
+            <div id="login-container">
+                <form id="login-form">
+                <h2 style="text-align: center;">LOGIN</h2>
+                
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+        
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+        
+                    <button type="button" onclick="login()">Login</button>
+                    <p>Don't have an account? <a href="#" onclick="showRegistrationForm()">Create one</a></p>
+                </form>
+                
+        
+                <div id="registration-form" style="display: none;">
+                    <h2 style="text-align: center;">CREATE ACCOUNT</h2>
+                    <form id="create-account-form">
+                        <label for="newUsername">Username:</label>
+                        <input type="text" id="newUsername" required>
+        
+                        <label for="newPassword">Password:</label>
+                        <input type="password" id="newPassword" required>
+        
+                        <button type="button" onclick="createAccount()">Create Account</button>
+        
+                        <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+        
+                    </form>
+                </div>
+        
+            <!-- Add your form elements here 
+        </div>
+    </div>
+
+    <script>
+        function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Simulate user authentication (you can replace this with actual authentication logic)
+    if (checkCredentials(username, password)) {
+        // Set the logged-in user in localStorage
+        localStorage.setItem('loggedInUser', username);
+
+        // Fetch user's location and display weather details
+        fetchLocation();
+    } else {
+        alert('Invalid username or password.');
+    }
+}
+
+function showRegistrationForm() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('registration-form').style.display = 'block';
+}
+
+function showLoginForm() {
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('registration-form').style.display = 'none';
+}
+
+function createAccount() {
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+
+    // Simulate account creation
+    localStorage.setItem(newUsername, newPassword);
+
+    // Set the logged-in user in localStorage
+    localStorage.setItem('loggedInUser', newUsername);
+
+    // Fetch user's location and display weather details
+    // fetchLocation();
+
+    alert('Account created successfully! You can now login.');
+}
+
+function checkCredentials(username, password) {
+    // Replace this with your actual authentication logic
+    const storedPassword = localStorage.getItem(username);
+    return password === storedPassword;
+}
+
+function fetchLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                localStorage.setItem('userLocation', JSON.stringify({ latitude, longitude }));
+                // Redirect to weather.html
+                window.location.href = 'community.html';
+            },
+            error => {
+                console.error('Error getting location:', error.message);
+            }
+        );
+    } else {
+        console.error('Geolocation is not supported by this browser.');
+    }
+}
+        // Open modal when the login/signup button is clicked
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            document.getElementById('myModal').style.display = 'block';
+        });
+
+        // Close modal when the close button is clicked
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside the modal
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #weather-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            /* text-align: left; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #weather-info {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+        }
+
+        .weather-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 30px; /* Adjust the size of the weather icon */
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="weather-container">
+    <img id="weather-icon" src="" alt="Weather Icon">
+    <h2 id="location">Loading...</h2>
+    <div id="weather-info">
+        <div class="weather-item">
+            <!-- <img src="cloud-icon.png" alt="Cloud Icon"> -->
+            <h4>Condition : </h4>
+            <p id="weather-condition">Loading...</p>
+        </div>
+        <div class="weather-item">
+            <!-- <img src="temperature-icon.png" alt="Temperature Icon"> -->
+            <h4>Temperature : </h4>
+            <p id="temperature">Loading...</p>
+        </div>
+        <div class="weather-item">
+            <!-- <img src="pressure-icon.png" alt="Pressure Icon"> -->
+            <h4>Pressure : </h4>
+            <p id="pressure">Loading...</p>
+        </div>
+        <div class="weather-item">
+            <!-- <img src="humidity-icon.png" alt="Humidity Icon"> -->
+            <h4>Humidity : </h4>
+            <p id="humidity">Loading...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Placeholder data (replace with actual data from your API)
+    const weatherData = {
+        location: "Zocca, Italy",
+        weatherIcon: "04d", // Placeholder icon code
+        weatherCondition: "Rain",
+        temperature: "7.13°C",
+        pressure: "1015 hPa",
+        humidity: "88%",
+    };
+
+    // Update the content on the webpage with weather data and dynamic images
+    document.getElementById('location').textContent = weatherData.location;
+    document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${weatherData.weatherIcon}.png`;
+    document.getElementById('weather-condition').textContent = weatherData.weatherCondition;
+    document.getElementById('temperature').textContent = `Temperature: ${weatherData.temperature}`;
+    document.getElementById('pressure').textContent = `Pressure: ${weatherData.pressure}`;
+    document.getElementById('humidity').textContent = `Humidity: ${weatherData.humidity}`;
+
+    // Map weather conditions to dynamic images
+    const weatherImageMap = {
+        "Clear": "clearsky.png",
+        "Clouds": "cloudy.png",
+        "Rain": "rainy.jpeg",
+        // Add more mappings as needed based on your available images
+    };
+
+    const dynamicImage = weatherImageMap[weatherData.weatherCondition.split(' ')[0]];
+    if (dynamicImage) {
+        document.getElementById('weather-icon').src = dynamicImage;
+    }
+</script>
+
+</body>
+</html>
+

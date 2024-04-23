@@ -1,0 +1,19 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    background-color: rgb(221, 127, 237);
+    text-align: center;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+}
+input{
+    border-radius: 5px;
+    height: 20px;
+}
+ul{
+    list-style-type: none;
+}

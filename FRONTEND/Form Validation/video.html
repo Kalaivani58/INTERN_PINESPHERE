@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Capture Frames</title>
+</head>
+
+<body>
+    <input type="file" accept="video/*" id="videoInput" />
+    <input type="number" id="numFrames" placeholder="Enter number of frames" />
+    <video controls id="videoPlayer" style="max-width: 100%;"></video>
+    <button onclick="startCapture()">Start Auto Capture</button>
+
+    <script>
+        let videoInput = document.getElementById('videoInput');
+        let videoPlayer = document.getElementById('videoPlayer');
+        let numFramesInput = document.getElementById('numFrames');
+        let capturing = false;
+        let framesCaptured = 0;
+
+        function startCapture() {
+            capturing = true;
+            framesCaptured = 0;
+            captureFrames();
+        }
+
+        function stopCapture() {
+            capturing = false;
+        }
+
+        function captureFrames() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            const video = videoPlayer;
+            const width = video.videoWidth;
+            const height = video.videoHeight;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            function capture() {
+                if (!capturing || framesCaptured >= numFramesInput.value) {
+                    return;
+                }
+
+                ctx.drawImage(video, 0, 0, width, height);
+
+                // Convert canvas to image
+                const image = new Image();
+                image.src = canvas.toDataURL();
+
+                // Display the captured image
+                document.body.appendChild(image);
+
+                framesCaptured++;
+
+                // Move to the next frame
+                requestAnimationFrame(capture);
+            }
+
+            capture();
+        }
+
+        videoInput.addEventListener('change', function () {
+            const file = this.files[0];
+
+            if (file) {
+                const objectURL = URL.createObjectURL(file);
+                videoPlayer.src = objectURL;
+            }
+        });
+    </script>
+</body>
+
+</html>

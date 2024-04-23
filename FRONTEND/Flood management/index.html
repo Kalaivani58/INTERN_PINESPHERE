@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="128x128" href="favicon2.png">
+    <title>FloodGuard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <img src="logo.png" alt="Logo">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li id="loginBtn">Signup/Login</li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <!-- Your landing page content goes here -->
+        <h1>SMART FLOOD MANAGEMENT AND COMMUNITY RESILIENCE</h1>
+        <p>Welcome to FloodGuard!</p>
+        <p>We Safeguard Lives When Flood Strikes!</p>
+    </section>
+
+    <section id="about">
+        <h1>WANNA KNOW US?</h1>
+        <p class="para">Welcome to FloodGuard, a trailblazing initiative committed to redefining flood management and
+            fortifying community resilience. In an era of changing climate patterns, our vision is to emerge as a beacon
+            of safety, offering comprehensive solutions to safeguard lives and properties against the escalating threats
+            of floods. At the core of our approach lies a fusion of state-of-the-art technology and community-driven
+            strategies. Our dedicated team of experts harnesses the power of data analytics, artificial intelligence,
+            and community engagement to create an ecosystem that not only predicts and mitigates flood risks but
+            actively involves and empowers communities in the process.</p>
+        <p class="para">Our journey is not just about deploying flood barriers; it's about fostering a culture of
+            preparedness, knowledge-sharing, and collective action. From advanced flood mapping to real-time monitoring
+            systems, we strive to equip communities with the tools and knowledge needed to face the challenges posed by
+            floods. Join us in building a resilient future where communities not only survive but thrive in the face of
+            adversity.</p>
+        <h1>WHY CHOOSE US?</h1>
+        <div class="services">
+            <div>
+                <h2>Innovative Technology and Solutions</h2>
+                <p>FloodGuard employs state-of-the-art technology and innovative solutions to address flood management
+                    challenges. Our advanced flood mapping techniques, smart infrastructure solutions, and data
+                    analytics powered by artificial intelligence ensure a proactive and effective approach to flood
+                    prevention and mitigation. By choosing FloodGuard, you opt for cutting-edge solutions that stay
+                    ahead of the curve.</p>
+            </div>
+
+            <div>
+                <h2>Community-Centric Approach</h2>
+                <p>We prioritize community engagement and resilience, recognizing that the strength of any flood
+                    management system lies in the preparedness and cooperation of the community. FloodGuard actively
+                    involves residents through educational programs, workshops, and community initiatives. Our
+                    community-centric approach ensures that individuals are well-informed, trained, and equipped to
+                    respond effectively to flood situations, fostering a sense of shared responsibility and
+                    preparedness.</p>
+            </div>
+
+            <div>
+                <h2>Holistic Flood Management Ecosystem</h2>
+                <p>FloodGuard offers a comprehensive suite of services that cover all aspects of flood management. From
+                    advanced mapping and prediction to smart infrastructure, emergency response, and long-term
+                    resilience initiatives, we provide an end-to-end ecosystem for flood management. Choosing FloodGuard
+                    means gaining access to a holistic approach that addresses immediate concerns while building a
+                    sustainable, resilient community for the future.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1>CONTACT US</h1>
+        <div class="contactsection">
+
+            <div class="address">
+                <h2>GET IN TOUCH</h2>
+
+                <div>
+                    <i class='bx bxs-envelope' style="font-size: 20px;"></i>
+                    <p>floodguard@gmail.com</p>
+                </div>
+
+                <div>
+                    <i class='bx bxs-phone' style="font-size: 20px;"></i>
+                    <p>+91 12345-67890</p>
+                </div>
+
+                <div>
+                    <i class='bx bxs-location-plus' style="font-size: 20px;"></i>
+                    <p>123 Main Street, Cityville, Country</p>
+                </div><br>
+
+                <div class="icons" style="justify-content: center; gap: 35px;font-size: 25px;">
+                    <i class='bx bxl-facebook-circle'></i>
+                    <i class='bx bxl-twitter'></i>
+                    <i class='bx bxl-instagram-alt'></i>
+                </div>
+            </div>
+
+            <div class="message">
+                <h2>SEND YOUR QUERIES</h2>
+                <input type="text" placeholder="Your name...">
+                <input type="text" placeholder="Your email...">
+                <input type="text" placeholder="Enter your queries..." style="height: 50px;">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="copyright">
+        <p>Copyrights &copy; 2023 FloodGuard. All rights reserved.</a></p>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+
+            <div style="display: flex; gap: 5%; margin-left: 30%;">
+                <div style="display: flex; align-content: center; justify-content: center;">
+                    <p>Organization</p>
+                    <input type="radio" name="userType" value="rescueTeam" class="inp">
+                </div>
+                <div style="display: flex;">
+                    <p>User</p>
+                    <input type="radio" name="userType" value="user" class="inp" >
+                </div>
+            </div>
+
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Your login/signup form goes here -->
+            <!-- <h2>Login/Signup</h2> -->
+
+            <div id="login-container">
+                <form id="login-form">
+                    <h2 style="text-align: center;  margin-bottom: 30px;">User Login to FloodGuard</h2>
+
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+
+                    <button type="button" onclick="login()">Login</button>
+                    <p>New to FloodGuard? <a href="#" onclick="showRegistrationForm()">Sign Up</a></p>
+                </form>
+
+
+                <div id="registration-form" style="display: none;">
+                    <h2 style="text-align: center;  margin-bottom: 30px;">Create your User account</h2>
+                    <form id="create-account-form">
+                        <label for="newUsername">Username:</label>
+                        <input type="text" id="newUsername" required>
+
+                        <label for="newPassword">Password:</label>
+                        <input type="password" id="newPassword" required>
+
+                        <button type="button" onclick="createAccount()">Create</button>
+
+                        <p>Already have an account? <a href="#" onclick="showLoginForm()">Sign In</a></p>
+
+                    </form>
+                </div>
+
+                <!-- Add your form elements here -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="OrgModal" class="modal">
+        <div class="modal-content">
+
+            <div style="display: flex; gap: 5%; margin-left: 30%;">
+                <div style="display: flex; align-content: center; justify-content: center;">
+                    <p>Organization</p>
+                    <input type="radio" name="userType" value="rescueTeam" class="inp">
+                </div>
+                <div style="display: flex;">
+                    <p>User</p>
+                    <input type="radio" name="userType" value="user" class="inp" >
+                </div>
+            </div>
+
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Your login/signup form goes here -->
+            <!-- <h2>Login/Signup</h2> -->
+
+            <div id="login-container">
+                <form id="login-form1">
+                    <h2 style="text-align: center; margin-bottom: 30px;">Organization login to FloodGuard</h2>
+
+                    <label for="username1">Username:</label>
+                    <input type="text" id="username1" required>
+
+                    <label for="password1">Password:</label>
+                    <input type="password" id="password1" required>
+
+                    <button type="button" onclick="Orglogin()">Login</button>
+                    <p>New to FloodGuard? <a href="#" onclick="showOrgRegForm()">Sign Up</a></p>
+                </form>
+
+
+                <div id="registration-form1" style="display: none;">
+                    <h2 style="text-align: center;  margin-bottom: 30px;">Create your Organization account</h2>
+                    <form id="create-account-form">
+                        <label for="newUsername1">Username:</label>
+                        <input type="text" id="newUsername1" required>
+
+                        <label for="newPhone1">Phone number:</label>
+                        <input type="number" id="newPhone1" required>
+                        <button type="button" onclick="requestCallback()">Request Call</button> <br> <br>
+
+                        <label for="verificationCode1">Verification Code:</label>
+                        <input type="number" id="verificationCode1" required>
+                        <!-- <button type="button" onclick="verifyCode()">Verify Code</button> <br> <br> -->
+
+                        <label for="newPassword1">Password:</label>
+                        <input type="password" id="newPassword1" required>
+
+                        <button type="button" onclick="createOrgAccount()">Create</button>
+
+                        <p>Already have an account? <a href="#" onclick="showOrgLogForm()">Sign In</a></p>
+
+                    </form>
+                </div>
+
+                <!-- Add your form elements here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

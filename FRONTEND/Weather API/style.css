@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#login-container {
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-style: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: purple;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    color: purple;
+}
+
+p{
+    color: white;
+}

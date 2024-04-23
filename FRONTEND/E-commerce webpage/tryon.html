@@ -1,0 +1,271 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page with Changing Content</title>
+    <style>
+        .main-home {
+            background: #f0f0f0;
+            padding: 50px;
+            text-align: center;
+            color: #333;
+        }
+
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-text {
+            max-width: 600px;
+            text-align: center;
+            animation: changeContent 15s infinite; /* Change every 15 seconds */
+        }
+
+        .text-btn {
+            margin-top: 20px;
+        }
+
+        @keyframes changeContent {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            25%, 75% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="main-home" id="home">
+        <div class="home">
+            <div class="home-text">
+                <p>Indulge your shopping desires</p>
+                <p>with the allure of</p>
+                <h1>YARA ELEGANCE</h1>
+                <div class="text-btn">
+                    <a href="#" class="main-btn">Shop Now</a><i class='bx bx-chevron-right-circle'></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html> -->
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page with Changing Background</title>
+    <style>
+        .home {
+            background-color: white;
+            background-image: url(five.jpg);
+            height: 600px;
+            width: 100%;
+            background-position: left;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: block;
+            animation: slideBackground 10s linear infinite;
+        }
+
+        @keyframes slideBackground {
+            from{
+                transform: translateX(0px);
+            }
+            to{
+                transform: translateX(-1600px);
+            }
+        }
+
+        /* Add additional styles as needed */
+    </style>
+</head>
+
+<body>
+
+    <section class="home" id="home">
+        Content goes here -->
+    <!-- </section>
+
+</body>
+
+</html> --> 
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page with Changing Background</title>
+    <style>
+        .home {
+            position: relative;
+            height: 600px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            animation: slideBackground 20s linear infinite;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background:nth-child(2) {
+            animation: fadeIn 1s forwards 18s;
+        }
+
+        .background:nth-child(3) {
+            animation: fadeIn 1s forwards 16s;
+        }
+
+        .background:nth-child(4) {
+            animation: fadeIn 1s forwards 14s;
+        }
+
+        .background:nth-child(5) {
+            animation: fadeIn 1s forwards 12s;
+        }
+
+        @keyframes slideBackground {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(-200%);
+            }
+
+            75% {
+                transform: translateX(-300%);
+            }
+
+            100% {
+                transform: translateX(-400%);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Add additional styles as needed */
+    </style>
+</head>
+
+<body>
+
+    <section class="home" id="home">
+        <div class="background" style="background-image: url(five.jpg);"></div>
+        <div class="background" style="background-image: url(four.jpg);"></div>
+        <div class="background" style="background-image: url(bg2.jpg);"></div>
+        <div class="background" style="background-image: url(six.jpg);"></div>
+        <div class="background" style="background-image: url(nine.jpg);"></div>
+    </section>
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing Background</title>
+    <style>
+        .background-div {
+            width: 100%;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-div img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background-div img.active {
+            opacity: 1;
+        }
+
+        .background-div img.enter, .background-div img.exit {
+            opacity: 1;
+            animation: slideBackground 6s linear infinite;
+        }
+
+        @keyframes slideBackground {
+            0%, 100% {
+                transform: translateX(0%);
+            }
+
+            16.66%, 83.33% {
+                transform: translateX(-100%);
+            }
+
+            33.33%, 66.66% {
+                transform: translateX(-200%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-div">
+        <img class="active" src="bg2.jpg" alt="Image 1">
+        <img class="enter" src="bg3.jpg" alt="Image 2">
+        <img class="exit" src="bg4.jpg" alt="Image 3">
+    </div>
+
+</body>
+
+</html>
+
+
+ 

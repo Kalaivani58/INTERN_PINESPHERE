@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url(flood.jpg);
+            background-position: center;
+            background-size: auto;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+            background-color: transparent;
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.396);
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message-section {
+            margin-top: 20px;
+        }
+
+        .message {
+            position: relative;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #ff8080; /* Red background by default */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #fff; /* White color for the icon */
+        }
+
+        .green {
+            background-color: #8cff80 !important; /* Green background for the check icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flood Management System</h1>
+        </header>
+        
+        <section id="userInputSection" class="user-input-section">
+            <textarea id="userMessage" placeholder="Share your flood-related situation..."></textarea>
+            <button onclick="submitMessage()">Submit</button>
+        </section>
+        <section id="messageSection" class="message-section">
+            <!-- Display flood-related messages here -->
+        </section>
+    </div>
+    <script>
+        function submitMessage() {
+            const messageSection = document.getElementById('messageSection');
+            const userMessage = document.getElementById('userMessage').value;
+
+            if (userMessage.trim() === '') {
+                alert('Please enter a valid message.');
+                return;
+            }
+
+            // Create a new message element
+            const userMessageElement = document.createElement('div');
+            userMessageElement.className = 'message';
+            userMessageElement.textContent = userMessage;
+
+            // Add an icon (cross) to the right of the message
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-times icon';
+            userMessageElement.appendChild(icon);
+
+            // Append the new message element to the message section
+            messageSection.appendChild(userMessageElement);
+
+            // Clear the textarea after submission
+            document.getElementById('userMessage').value = '';
+
+            // Add a click event listener to the icon for toggling
+            icon.addEventListener('click', function () {
+                toggleIconAndBackground(icon, userMessageElement);
+            });
+        }
+
+        function toggleIconAndBackground(icon, messageElement) {
+            // Toggle between cross and check icons
+            if (icon.classList.contains('fa-times')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-check');
+                messageElement.classList.add('green');
+            } else {
+                icon.classList.remove('fa-check');
+                icon.classList.add('fa-times');
+                messageElement.classList.remove('green');
+            }
+        }
+    </script>
+</body>
+</html>

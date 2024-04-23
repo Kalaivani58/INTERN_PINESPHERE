@@ -1,0 +1,257 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    text-decoration: none;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    position: fixed;
+}
+
+nav img {
+    width: 150px;
+    /* Adjust the width of the logo */
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: aqua;
+    transform: scale(1.2);
+}
+
+#home {
+    background-image: url(bg2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    height: 85vh;
+    padding: 20px;
+    text-align: center;
+}
+
+#home h1 {
+    margin-top: 8%;
+    font-weight: 600px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    margin-bottom: 7%;
+}
+
+#home p {
+    font-size: 28px;
+    color: black;
+    text-shadow: 2px 2px 0px white;
+}
+
+#about,
+#contact {
+    margin: 10px 10%;
+}
+
+#about h1 {
+    font-size: 30px;
+}
+
+#about .para {
+    line-height: 30px;
+    text-align: justify;
+    font-size: 20px;
+}
+
+#about .services {
+    display: flex;
+    justify-content: space-between;
+}
+
+#about .services div {
+    width: 29%;
+    background-color: rgba(77, 245, 245, 0.179);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 5px 0px 5px rgb(208, 207, 207);
+}
+
+.services div p {
+    line-height: 30px;
+    text-align: justify;
+    font-size: 16px;
+}
+
+.contactsection {
+    display: flex;
+    justify-content: space-around;
+}
+
+#contact h1 {
+    font-size: 30px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.message h2 {
+    margin: 10px;
+}
+
+.message input {
+    border: 1px solid rgba(77, 245, 245, 0.804);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.message input:focus{
+    outline: none;
+}
+
+.message button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(77, 245, 245, 0.681);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.442);
+    transition: all 0.30s;
+}
+
+.message button:hover {
+    background-color: #333;
+    color: white;
+    box-shadow: 1px 1px 10px rgba(77, 245, 245, 0.805);
+    height: 30px;
+    transform: scale(0.8, 0.8);
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+}
+
+.address div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    padding: 15px;
+    background-color: #333;
+    margin-top: 2%;
+}
+
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fffffff6;
+    /* backdrop-filter: blur(10px); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.modal-content {
+    text-align: left;
+}
+
+.close {
+    position: absolute;
+    top: 6px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 40px;
+}
+.inp{
+    margin-bottom: 3px;
+}
+
+
+.logger {
+    display: inline-block;
+    /* margin-right: 20px; */
+    width: 150px;
+}
+
+#loggerOption {
+    margin-top: 20px;
+}
+
+
+#login-container {
+    max-width: 400px;
+    margin: 1% auto;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+    /* backdrop-filter: blur(10px); */
+}
+
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(77, 245, 245, 0.804);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus{
+    outline: none;
+}
+
+button {
+    background-color: rgba(77, 245, 245, 0.681);
+    /* color: white; */
+    padding: 8px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    color: rgb(2, 139, 139);
+}

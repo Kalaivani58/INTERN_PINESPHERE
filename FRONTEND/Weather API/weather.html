@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(bg.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 90vh;
+        }
+
+        #weatherInfo{
+            max-width: 300px;
+            margin: 2% auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            align-items: center;
+        }
+
+        h2{
+            text-align: center;
+            margin-top: 150px;
+            color: white;
+        }
+        p{
+            font-weight: bold;
+            margin-left: 70px;
+        }
+
+        #newsTickerContainer {
+            white-space: nowrap;
+            overflow: hidden;
+            position: fixed;
+            bottom: 20%;
+            left: 0;
+            width: 100%;
+            background-color: transparent; /* Add background color as needed */
+        }
+
+        .newsItem {
+            color: white;
+            display: inline-flex;
+            border: 1px solid white;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            /* padding-right: 20px; Adjust the space between news items */
+        }
+
+        .newsItem img {
+            border-radius: 5px;
+            max-width: 100px; /* Adjust the maximum width of the image */
+            margin-right: 10px; /* Adjust the space between the image and text */
+            vertical-align: middle;
+        }
+
+        .newsContent{
+            word-wrap: break-word
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h2>WEATHER DETAILS</h2>
+    <div id="weatherInfo"></div>
+
+    <div id="newsTickerContainer">
+        <div id="newsTicker"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Fetch weather details when the page is loaded
+    fetchWeatherDetailsAndDisplay();
+    displayNewsTicker();
+});
+
+async function fetchWeatherDetailsAndDisplay() {
+    try {
+        // Fetch latitude and longitude from localStorage (assuming they were saved during login)
+        const username = localStorage.getItem('loggedInUser');
+        const storedLocation = localStorage.getItem('userLocation');
+        const { latitude, longitude } = JSON.parse(storedLocation);
+
+        // Fetch weather details from the OpenWeatherMap API
+        const apiKey = '01c8404013bcc52100638c0004dda58f';
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+        const response = await fetch(apiUrl);
+
+        if (response.ok) {
+            const data = await response.json();
+            // Assuming the API response structure
+            const temperature = data.main.temp;
+            const conditions = data.weather[0].main;
+            const windspeed = data.wind.speed;
+            const city = data.name;
+
+            // Display weather information on the page
+            const weatherInfoDiv = document.getElementById('weatherInfo');
+            weatherInfoDiv.innerHTML = `<p>Temperature: ${temperature} °C</p><p>Conditions: ${conditions}</p><p>Wind Speed: ${windspeed} m/s</p><p>Location: ${city}</p>`;
+        } else {
+            throw new Error(`Failed to fetch weather data. Status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Error fetching weather data:', error.message);
+    }
+}
+
+async function displayNewsTicker() {
+            const apiKey = '62a90b18a7314d069a5c9d7eb173df1b'; // Replace with your News API key
+            const newsUrl = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(newsUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch news. Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const newsTicker = document.getElementById('newsTicker');
+
+                if (data.articles && data.articles.length > 0) {
+                    let tickerWidth = 0;
+
+                    data.articles.forEach(article => {
+                        const newsItem = document.createElement('div');
+                        newsItem.classList.add('newsItem');
+                        newsItem.innerHTML = `
+                            <img src="${article.urlToImage}" alt="News Image">
+                        <div class = 'newsContent'>
+                            <h3>${article.title}</h3>
+                            <a href="${article.url}" target="_blank">Read more</a>
+                        </div>`;
+                        newsTicker.appendChild(newsItem);
+
+                        // Calculate the total width of news items for scrolling
+                        tickerWidth += newsItem.clientWidth; // 20 is the padding-right
+                    });
+
+                    // Set the width of the ticker container to enable scrolling
+                    newsTicker.style.width = `${tickerWidth}px`;
+
+                    // Call the scroll function after a delay
+                    setTimeout(() => {
+                        scrollNewsTicker(newsTicker, tickerWidth);
+                    }, 100); // Adjust the delay (in milliseconds) before starting the scroll
+                } else {
+                    newsTicker.innerHTML = '<p>No news available at the moment.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error.message);
+            }
+        }
+
+        function scrollNewsTicker(ticker, width) {
+            let position = 1500;
+
+            function animateScroll() {
+                position -= 1;
+                if (position < -width) {
+                    position = ticker.clientWidth;
+                }
+                ticker.style.transform = `translateX(${position}px)`;
+                requestAnimationFrame(animateScroll);
+            }
+
+            // Start the animation
+            animateScroll();
+        }
+
+    </script>
+</body>
+</html>

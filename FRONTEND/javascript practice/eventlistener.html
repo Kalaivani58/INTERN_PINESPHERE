@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventlistener</title>
+    <style>
+        button{
+            color: white;
+            background-color: black;
+            border-style: none;
+            box-shadow: 2px 2px 10px rgb(141, 141, 141);
+            border-radius: 20px;
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button id="butn">Don't</button>
+    <script>
+        var button = document.getElementById("butn")
+        button.addEventListener("click",function(){
+            alert("I said don't")
+        })
+    </script>
+</body>
+</html>
